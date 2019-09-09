@@ -11,12 +11,18 @@ $(document).ready(function() {
         });
     });
     $('.accordion-container').find('.accordion-toggle').click(function() {
-        if ($(this).hasClass('active')) {} else {
+        if ($(this).hasClass('active')) {
+            // console.log('Already active');
             $('.accordion-toggle').removeClass('active');
-            console.log('Class Removed');
-            $(this).next().slideToggle('fast');
+            $(".accordion-content").slideUp('fast');
+        } else {
+            // console.log('Switching active');
+            if ($('.accordion-toggle.active').length > 0) {
+              $('.accordion-toggle.active').removeClass('active');
+              $(".accordion-content").not($(this).next()).slideUp('fast');
+            }
             $(this).addClass('active');
-            $(".accordion-content").not($(this).next()).slideUp('fast');
+            $(this).next().slideToggle('fast');
         };
     });
 
