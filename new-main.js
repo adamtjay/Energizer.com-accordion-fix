@@ -19,10 +19,10 @@ $(document).ready(function() {
             // console.log('Switching active');
             if ($('.accordion-toggle.active').length > 0) {
               $('.accordion-toggle.active').removeClass('active');
-              $(".accordion-content").not($(this).next()).slideUp('fast');
+              // $(".accordion-content").not($(this).next()).slideUp('fast');
             }
-            $(this).addClass('active');
             $(this).next().slideToggle('fast');
+            $(this).addClass('active');
         };
     });
 
