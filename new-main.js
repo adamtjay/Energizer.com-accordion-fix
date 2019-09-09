@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    var firstLoad = 1;
+
     $('.accordion').click(function() {
         // $(this).toggleClass('active');
     });
@@ -10,18 +13,20 @@ $(document).ready(function() {
             'data-videoID': id
         });
     });
-    $('.accordion-container').find('.accordion-toggle').click(function() {
-        if ($(this).hasClass('active')) {
+    $('.accordion-container').find('.accordion-toggle').click(function(e) {
+      console.log(firstLoad, e);
+        if ($(this).hasClass('active') && firstLoad === 0) {
             // console.log('Already active');
             $(this).removeClass('active');
             $(this).next().slideUp('fast');
         } else {
             // console.log('Switching active');
-            if ($('.accordion-toggle.active').length > 0) {
-              $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
-              $('.accordion-toggle.active').not($(this).next()).removeClass('active');
-              // $(".accordion-content").not($(this).next()).slideUp('fast');
+            if ($('.accordion-toggle.active').length > 0 && firstLoad === 0) {
+                $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
+                $('.accordion-toggle.active').not($(this).next()).removeClass('active');
+                // $(".accordion-content").not($(this).next()).slideUp('fast');
             }
+            firstLoad = 0;
             $(this).addClass('active');
             $(this).next().slideDown('fast');
         };
