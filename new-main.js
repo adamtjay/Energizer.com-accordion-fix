@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('.accordion').click(function() {
-        $(this).toggleClass('active');
+        // $(this).toggleClass('active');
     });
     $('.update-video').click(function(e) {
         e.preventDefault();
@@ -13,16 +13,17 @@ $(document).ready(function() {
     $('.accordion-container').find('.accordion-toggle').click(function() {
         if ($(this).hasClass('active')) {
             // console.log('Already active');
-            $('.accordion-toggle').removeClass('active');
-            $(".accordion-content").slideUp('fast');
+            $(this).removeClass('active');
+            $(this).next().slideUp('fast');
         } else {
             // console.log('Switching active');
             if ($('.accordion-toggle.active').length > 0) {
-              $('.accordion-toggle.active').removeClass('active');
+              $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
+              $('.accordion-toggle.active').not($(this).next()).removeClass('active');
               // $(".accordion-content").not($(this).next()).slideUp('fast');
             }
-            $(this).next().slideToggle('fast');
             $(this).addClass('active');
+            $(this).next().slideDown('fast');
         };
     });
 
