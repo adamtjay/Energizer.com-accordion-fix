@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-    $('.accordion').click(function() {
-        // $(this).toggleClass('active');
-    });
     $('.update-video').click(function(e) {
         e.preventDefault();
         var id = $(this).attr('data-videoID');
@@ -12,13 +9,10 @@ $(document).ready(function() {
         });
     });
     $('.accordion-container').find('.accordion-toggle').click(function(e) {
-        console.log(!e.isTrigger, e);
-        // If accordion clicked is already active
         if ($(this).hasClass('active') && !e.isTrigger) {
             $(this).removeClass('active');
             $(this).next().slideUp('fast');
         } else {
-            // If accordion clicked was not already active
             if ($('.accordion-toggle.active').length > 0) {
                 $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
                 $('.accordion-toggle.active').not($(this).next()).removeClass('active');
