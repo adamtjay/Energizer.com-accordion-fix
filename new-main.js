@@ -14,8 +14,8 @@ $(document).ready(function() {
         });
     });
     $('.accordion-container').find('.accordion-toggle').click(function(e) {
-      console.log(firstLoad, e);
-        if ($(this).hasClass('active') && firstLoad === 0) {
+      console.log(firstLoad, e.isTrigger, e);
+        if ($(this).hasClass('active') && e.isTrigger === undefined && firstLoad === 0) {
             // console.log('Already active');
             $(this).removeClass('active');
             $(this).next().slideUp('fast');
