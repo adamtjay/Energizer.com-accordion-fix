@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    var firstLoad = 1;
-
     $('.update-video').click(function(e) {
         e.preventDefault();
         var id = $(this).attr('data-videoID');
@@ -10,6 +8,8 @@ $(document).ready(function() {
             'data-videoID': id
         });
     });
+
+    var firstLoad = 1;
     $('.accordion-container').find('.accordion-toggle').click(function(e) {
         if ($(this).hasClass('active') && !e.isTrigger) {
               $(this).removeClass('active');
