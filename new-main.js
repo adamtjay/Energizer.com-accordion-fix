@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var firstLoad = 1;
+
     $('.update-video').click(function(e) {
         e.preventDefault();
         var id = $(this).attr('data-videoID');
@@ -17,11 +19,12 @@ $(document).ready(function() {
                 $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
                 $('.accordion-toggle.active').not($(this).next()).removeClass('active');
             }
-        if (e.isTrigger) {
+        if (firstLoad === 1 || e.isTrigger) {
           $(this).addClass('active');
           $(this).next().slideDown('fast');
       }
         };
+        firstLoad = 0;
     });
 
     function DropDown(el) {
