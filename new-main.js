@@ -17,8 +17,10 @@ $(document).ready(function() {
                 $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
                 $('.accordion-toggle.active').not($(this).next()).removeClass('active');
             }
-            $(this).addClass('active');
-            $(this).next().slideDown('fast');
+        if (e.isTrigger) {
+          $(this).addClass('active');
+          $(this).next().slideDown('fast');
+      }
         };
     });
 
