@@ -12,18 +12,18 @@ $(document).ready(function() {
     });
     $('.accordion-container').find('.accordion-toggle').click(function(e) {
         if ($(this).hasClass('active') && !e.isTrigger) {
-            $(this).removeClass('active');
-            $(this).next().slideUp('fast');
+              $(this).removeClass('active');
+              $(this).next().slideUp('fast');
         } else {
-            if ($('.accordion-toggle.active').length > 0) {
+        if (firstLoad === 1 || !e.isTrigger) {
+          if ($('.accordion-toggle.active').length > 0) {
                 $('.accordion-toggle.active').not($(this).next()).next().slideUp('fast');
                 $('.accordion-toggle.active').not($(this).next()).removeClass('active');
             }
-        if (firstLoad === 1 || e.isTrigger) {
-          $(this).addClass('active');
-          $(this).next().slideDown('fast');
-      }
-        };
+            $(this).addClass('active');
+            $(this).next().slideDown('fast');
+        }
+      };
         firstLoad = 0;
     });
 
